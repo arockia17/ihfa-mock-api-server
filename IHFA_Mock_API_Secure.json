@@ -32,7 +32,15 @@
         "status": "success",
         "message": "Login successful",
         "data": {
-          "firstLogin": true
+          "proifle":{
+            "userId": "USR00987",
+            "firstname": "Arockia",
+            "lastname": "Raj",
+            "phone": 9876543210,
+            "email": "arockia.d@email.com",
+            "imageURl":"",
+            "firstLogin": true
+          }     
         }
       }
     },
