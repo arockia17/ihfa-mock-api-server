@@ -1,0 +1,15 @@
+{
+  "name": "ihfa-mock-api-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mock API server for IHFA Mobile App \u2013 change baseUrl later to switch to real APIs.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:delay": "MOCK_DELAY_MS=500 node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

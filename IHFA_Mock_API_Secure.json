@@ -1,0 +1,259 @@
+{
+  "baseUrl": "http://localhost:3000/mock",
+  "endpoints": {
+    "/auth/token": {
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "authenticationKey": ""
+      },
+      "response": {
+        "status": "success",
+        "message": "Token successful",
+        "data": {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting"
+        }
+      }
+    },
+    "/auth/login": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "username": "arockia.d@email.com",
+        "password": "Secure@123",
+        "deviceId": "asshfgfa2345440303aadafdd3323"
+      },
+      "response": {
+        "status": "success",
+        "message": "Login successful",
+        "data": {
+          "firstLogin": true
+        }
+      }
+    },
+    "/auth/forgot-username": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "emailId": "arockia.d@email.com"
+      },
+      "response": {
+        "status": "success",
+        "message": "Username has been sent to your registered email.",
+        "data": {
+          "result": "success"
+        }
+      }
+    },
+    "/auth/forgot-password/request": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "emailId": "arockia.d@email.com"
+      },
+      "response": {
+        "status": "success",
+        "message": "OTP sent successfully to registered email.",
+        "data": {
+          "otpReferenceId": "OTP12345"
+        }
+      }
+    },
+    "/auth/forgot-password/validate": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "otp": "542318",
+        "otpReferenceId": "OTP12345"
+      },
+      "response": {
+        "status": "success",
+        "message": "OTP validated successfully.",
+        "data": {
+          "validationStatus": true
+        }
+      }
+    },
+    "/auth/forgot-password/reset": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "newPassword": "StrongPass@123",
+        "confirmPassword": "StrongPass@123"
+      },
+      "response": {
+        "status": "success",
+        "message": "Password reset successfully.",
+        "data": {
+          "email": "arockia.d@email.com",
+          "updatedAt": "2025-11-06T10:00:00Z"
+        }
+      }
+    },
+    "/registration/validate-user": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "loanNumber": "LN90876",
+        "ssnLast4": "6789",
+        "zipCode": "90001"
+      },
+      "response": {
+        "status": "success",
+        "message": "User validation successful.",
+        "data": {
+          "loanNumber": "LN90876",
+          "isEligible": true
+        }
+      }
+    },
+    "/registration/create-account": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "firstName": "Arockia",
+        "lastName": "Raj",
+        "emailAddress": "arockia.d@email.com",
+        "phoneNumber": "+1-9876543210",
+        "password": "StrongPass@123",
+        "confirmPassword": "StrongPass@123"
+      },
+      "response": {
+        "status": "success",
+        "message": "Account created successfully.",
+        "data": {
+          "userId": "USR00987",
+          "username": "arockia.d@email.com"
+        }
+      }
+    },
+    "/registration/email-verification": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "email": "arockia.d@email.com",
+        "verificationLink": "https://usloanapp.com/verify/XYZ123"
+      },
+      "response": {
+        "status": "success",
+        "message": "Verification email sent successfully.",
+        "data": {
+          "result": "success"
+        }
+      }
+    },
+    "/registration/otp/request": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "deliveryMethod": "SMS/Call"
+      },
+      "response": {
+        "status": "success",
+        "message": "OTP sent to your registered mobile number via SMS/Call",
+        "data": {
+          "otpReferenceId": "REGOTP987",
+          "deliveryMethod": "SMS/Call"
+        }
+      }
+    },
+    "/registration/otp/validate": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "otp": "432198",
+        "otpReferenceId": "REGOTP987"
+      },
+      "response": {
+        "status": "success",
+        "message": "OTP verified successfully.",
+        "data": {
+          "otpReferenceId": "REGOTP987",
+          "verified": true
+        }
+      }
+    },
+    "/legal/terms-privacy": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "acceptTermsAndPrivacy": true
+      },
+      "response": {
+        "status": "success",
+        "message": "Terms and Privacy Policy accepted.",
+        "data": {
+          "userId": "USR00987",
+          "acceptedAt": "2025-11-06T09:45:00Z",
+          "acceptedVersion": "v2.3"
+        }
+      }
+    },
+    "/auth/refresh": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "refreshToken": "mockRefreshToken123"
+      },
+      "response": {
+        "status": "success",
+        "message": "Token refreshed",
+        "data": {
+          "accessToken": "newMockAccessTokenXYZ",
+          "refreshToken": "newMockRefreshTokenABC",
+          "expiresIn": 900
+        }
+      }
+    },
+    "/__health": {
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json"
+      },
+      "request": {},
+      "response": {
+        "status": "ok",
+        "time": "2025-11-12T08:33:30.494874Z"
+      }
+    }
+  }
+}
