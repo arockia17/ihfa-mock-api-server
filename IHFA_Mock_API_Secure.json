@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:3000/mock",
+  "baseUrl": "https://ihfa-mock-api-server.com/mock",
   "endpoints": {
     "/auth/token": {
       "method": "POST",
@@ -10,10 +10,11 @@
         "authenticationKey": ""
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Token successful",
         "data": {
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting"
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting",
+          "version": "1.0.0" 
         }
       }
     },
@@ -21,15 +22,17 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "username": "arockia.d@email.com",
         "password": "Secure@123",
-        "deviceId": "asshfgfa2345440303aadafdd3323"
+        "deviceId": "asshfgfa2345440303aadafdd3323",
+        "fcm-token":"fhskjhewjkh32j4hdf87bg32r4bjhsdfjbjhfd89dshfjsjkdfksdfibsdbfbjwerhj78324hbjhbsdkfsdf"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Login successful",
         "data": {
           "proifle":{
@@ -38,7 +41,7 @@
             "lastname": "Raj",
             "phone": 9876543210,
             "email": "arockia.d@email.com",
-            "imageURl":"",
+            "imageurl":"",
             "firstLogin": true
           }     
         }
@@ -48,13 +51,14 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+         "language-code": "EN"
       },
       "request": {
         "emailId": "arockia.d@email.com"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Username has been sent to your registered email.",
         "data": {
           "result": "success"
@@ -65,13 +69,14 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+         "language-code": "EN"
       },
       "request": {
         "emailId": "arockia.d@email.com"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "OTP sent successfully to registered email.",
         "data": {
           "otpReferenceId": "OTP12345"
@@ -82,17 +87,19 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+         "language-code": "EN"
       },
       "request": {
         "otp": "542318",
         "otpReferenceId": "OTP12345"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "OTP validated successfully.",
         "data": {
-          "validationStatus": true
+          "validationStatus": true,
+          "validation-request-id": "1"
         }
       }
     },
@@ -100,14 +107,16 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+         "language-code": "EN"
       },
       "request": {
         "newPassword": "StrongPass@123",
-        "confirmPassword": "StrongPass@123"
+        "confirmPassword": "StrongPass@123",
+         "validation-request-id": "1"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Password reset successfully.",
         "data": {
           "email": "arockia.d@email.com",
@@ -119,7 +128,8 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "loanNumber": "LN90876",
@@ -127,11 +137,12 @@
         "zipCode": "90001"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "User validation successful.",
         "data": {
           "loanNumber": "LN90876",
-          "isEligible": true
+          "isEligible": true,
+          "registrationid": "RG35467234"
         }
       }
     },
@@ -139,9 +150,11 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
+        "registrationid": "RG35467234",
         "firstName": "Arockia",
         "lastName": "Raj",
         "emailAddress": "arockia.d@email.com",
@@ -150,7 +163,7 @@
         "confirmPassword": "StrongPass@123"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Account created successfully.",
         "data": {
           "userId": "USR00987",
@@ -158,35 +171,39 @@
         }
       }
     },
+    
     "/registration/email-verification": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "email": "arockia.d@email.com",
         "verificationLink": "https://usloanapp.com/verify/XYZ123"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Verification email sent successfully.",
         "data": {
           "result": "success"
         }
       }
     },
+
     "/registration/otp/request": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "deliveryMethod": "SMS/Call"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "OTP sent to your registered mobile number via SMS/Call",
         "data": {
           "otpReferenceId": "REGOTP987",
@@ -198,14 +215,15 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "otp": "432198",
         "otpReferenceId": "REGOTP987"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "OTP verified successfully.",
         "data": {
           "otpReferenceId": "REGOTP987",
@@ -217,21 +235,43 @@
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{token}}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "language-code": "EN"
       },
       "request": {
         "acceptTermsAndPrivacy": true
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Terms and Privacy Policy accepted.",
         "data": {
           "userId": "USR00987",
-          "acceptedAt": "2025-11-06T09:45:00Z",
-          "acceptedVersion": "v2.3"
+          "acceptedAt": "2025-11-06T09:45:00Z"
         }
       }
     },
+    "/refinance": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{token}}",
+        "Content-Type": "application/json",
+        "language-code": "EN"
+      },
+      "request": {
+        "userId": "USR00987",
+        "firstName": "Arockia",
+        "lastName": "Raj",
+        "emailAddress": "arockia.d@email.com",
+        "phoneNumber": "+1-9876543210",
+        "prefferedtime": "AM",
+        "modeofcontact": "email/Call"
+      },
+      "response": {
+        "status": true,
+        "message": "Refinance request created successfully."
+      }
+    },
+
     "/auth/refresh": {
       "method": "POST",
       "headers": {
@@ -242,7 +282,7 @@
         "refreshToken": "mockRefreshToken123"
       },
       "response": {
-        "status": "success",
+        "status": true,
         "message": "Token refreshed",
         "data": {
           "accessToken": "newMockAccessTokenXYZ",
