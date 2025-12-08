@@ -4,53 +4,56 @@
     "/auth/token": {
       "method": "POST",
       "headers": {
-        "Content-Type": "application/json"
+       "Authorization": "Bearer {{headerSceret}}",
+       "Content-Type": "application/json"
+         
       },
       "request": {
-        "authenticationKey": ""
+        "authenticationKey": "sdfsdfsgsdfsdfsdfsd",
+        "deviceId": "asshfgfa2345440303aadafdd3323",
+        "platform": "android|ios",
+        "os_version": "15.0.0",
+        "fcm-token":"fhskjhewjkh32j4hdf87bg32r4bjhsdfjbjhfd89dshfjsjkdfksdfibsdbfbjwerhj78324hbjhbsdkfsdf"
+
       },
       "response": {
         "status": true,
         "message": "Token successful",
         "data": {
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting",
+          "appToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting",
           "version": "1.0.0" 
         }
       }
     },
+
     "/auth/login": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
       "request": {
         "username": "arockia.d@email.com",
-        "password": "Secure@123",
-        "deviceId": "asshfgfa2345440303aadafdd3323",
-        "fcm-token":"fhskjhewjkh32j4hdf87bg32r4bjhsdfjbjhfd89dshfjsjkdfksdfibsdbfbjwerhj78324hbjhbsdkfsdf"
+        "password": "Secure@123"  
       },
       "response": {
         "status": true,
         "message": "Login successful",
         "data": {
-          "profile":{
             "userId": "USR00987",
-            "firstname": "Arockia",
-            "lastname": "Raj",
-            "phone": 9876543210,
-            "email": "arockia.d@email.com",
             "imageurl":"",
-            "firstLogin": true
-          }     
+            "firstLogin": true,
+            "accessToken": "newMockAccessTokenXYZ",
+            "refreshToken": "newMockRefreshTokenABC" 
         }
       }
     },
+    
     "/auth/forgot-username": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
          "language-code": "EN"
       },
@@ -65,10 +68,11 @@
         }
       }
     },
+
     "/auth/forgot-password/request": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
          "language-code": "EN"
       },
@@ -83,10 +87,11 @@
         }
       }
     },
+
     "/auth/forgot-password/validate": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
          "language-code": "EN"
       },
@@ -103,10 +108,11 @@
         }
       }
     },
+
     "/auth/forgot-password/reset": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
          "language-code": "EN"
       },
@@ -124,10 +130,11 @@
         }
       }
     },
+
     "/registration/validate-user": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -146,10 +153,11 @@
         }
       }
     },
+
     "/registration/create-account": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -175,7 +183,7 @@
     "/registration/email-verification": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -195,7 +203,7 @@
     "/registration/otp/request": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -211,10 +219,11 @@
         }
       }
     },
+
     "/registration/otp/validate": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -234,7 +243,7 @@
     "/legal/terms-privacy": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -250,10 +259,67 @@
         }
       }
     },
+
+    "/refinance/getInfo": {
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json",
+        "language-code": "EN"
+      },
+      "request": {},
+      "response": {
+        "status": true,
+        "message": "Refinance information fetched successfully.",
+        "data":{
+          "firstName": "Pitt",
+          "lastName": "Rock",
+          "phoneNumber": "9876543210",
+          "email": "arockia.d@flatworldsolutions.com",
+          "state": "Idaho",
+          "cityId": "d5199f34-1f7f-45e8-bd01-10dd0620b2cc",
+          "cityCounties": [
+            {
+              "cityId": "d5199f34-1f7f-45e8-bd01-10dd0620b2cc",
+              "cityAndCounty": "ADA - BOISE"
+            },
+            {
+              "cityId": "cfcf5c00-2853-476d-bf96-6db570a00857",
+              "cityAndCounty": "ADA - EAGLE"
+            },
+            {
+              "cityId": "a56a9bcd-6bb9-4492-8eac-b562413b4593",
+              "cityAndCounty": "ADA - GARDEN CITY"
+            },
+            {
+              "cityId": "1c282fa6-d9a6-434c-8268-c2c3d4821449",
+              "cityAndCounty": "ADA - KUNA"
+            },
+            {
+              "cityId": "0fe22ade-0c7b-440c-a707-2ded3a1c24c9",
+              "cityAndCounty": "ADA - MERIDIAN"
+            },
+            {
+              "cityId": "c09d29af-0bd7-4278-a560-4ea14de5ed26",
+              "cityAndCounty": "ADA - STAR"
+            },
+            {
+              "cityId": "42bff638-19e4-4d34-b73f-e02c3c0193a2",
+              "cityAndCounty": "ADAMS - COUNCIL"
+            },
+            {
+              "cityId": "68abe5ab-9fad-4222-aeff-1b5b0cd9c40e",
+              "cityAndCounty": "WASHINGTON - WEISER"
+            }             
+        ]
+      }
+    }
+  },
+
     "/refinance": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
         "language-code": "EN"
       },
@@ -271,11 +337,82 @@
         "message": "Refinance request created successfully."
       }
     },
+    
+    "/dashboard/loans": {
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+    },
+    "request": {},
+    "response": {
+      "status": true,
+      "message": "Dashboard loans fetched successfully.",
+      "data": [
+          {
+            "loanNumber": "02912312390",
+            "loanStatus": "R",
+            "isPrimaryLoan": true,
+            "propertyAddress": "882 S CURTIS RD",
+            "propertyAddress2": null,
+            "propertyCity": "BOISE",
+            "propertyState": "ID",
+            "propertyZip": "83705",
+            "interestRate": 0.0575,
+            "principalBalance": 19344.15,
+            "escrowBalance": 52344.0,
+            "currentAmountDue": 1390.0,
+            "paymentDueDate": "2025-09-01T00:00:00",
+            "principalAndInterest": 962.75,
+            "escrowForTaxesAndInsurance": 427.25,
+            "subsidizedAmount": 0.0,
+            "partialPayment": 0.0,
+            "lateFee": 0.0,
+            "nsfFee": 0.0,
+            "deferredLateFee": 0.0,
+            "deferredNsfFee": 0.0,
+            "otherFees": 0.0,
+			"autoPayEnabled": true,
+            "borrowerNames": [
+              "PENNY PUBLIC"
+            ]
+        },
+        {
+            "loanNumber": "7357000038",
+            "loanStatus": "R",
+            "isPrimaryLoan": false,
+            "propertyAddress": "765 SOME PARKWAY",
+            "propertyAddress2": null,
+            "propertyCity": "BOISE",
+            "propertyState": "ID",
+            "propertyZip": "83703",
+            "interestRate": 0.0425,
+            "principalBalance": 275650.0,
+            "escrowBalance": 0.0,
+            "currentAmountDue": 961.41,
+            "paymentDueDate": "2025-11-01T00:00:00",
+            "principalAndInterest": 683.93,
+            "escrowForTaxesAndInsurance": 459.07,
+            "subsidizedAmount": 0.0,
+            "partialPayment": -232.75,
+            "lateFee": 51.16,
+            "nsfFee": 0.0,
+            "deferredLateFee": 0.0,
+            "deferredNsfFee": 0.0,
+            "otherFees": 0.0,
+			      "autoPayEnabled": false,
+            "borrowerNames": [
+              "PITT ROCK"
+            ]
+          }
+        ]
+      }
+  },
 
     "/auth/refresh": {
       "method": "POST",
       "headers": {
-        "Authorization": "Bearer {{token}}",
+        "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json"
       },
       "request": {
@@ -286,11 +423,11 @@
         "message": "Token refreshed",
         "data": {
           "accessToken": "newMockAccessTokenXYZ",
-          "refreshToken": "newMockRefreshTokenABC",
-          "expiresIn": 900
+          "refreshToken": "newMockRefreshTokenABC"
         }
       }
     },
+
     "/__health": {
       "method": "GET",
       "headers": {
