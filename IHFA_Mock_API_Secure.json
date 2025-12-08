@@ -35,7 +35,7 @@
         "status": true,
         "message": "Login successful",
         "data": {
-          "proifle":{
+          "profile":{
             "userId": "USR00987",
             "firstname": "Arockia",
             "lastname": "Raj",
