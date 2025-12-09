@@ -4,28 +4,25 @@
     "/auth/token": {
       "method": "POST",
       "headers": {
-       "Authorization": "Bearer {{headerSceret}}",
-       "Content-Type": "application/json"
-         
+        "Authorization": "Bearer {{headerSceret}}",
+        "Content-Type": "application/json"
       },
       "request": {
         "authenticationKey": "sdfsdfsgsdfsdfsdfsd",
         "deviceId": "asshfgfa2345440303aadafdd3323",
         "platform": "android|ios",
         "os_version": "15.0.0",
-        "fcm-token":"fhskjhewjkh32j4hdf87bg32r4bjhsdfjbjhfd89dshfjsjkdfksdfibsdbfbjwerhj78324hbjhbsdkfsdf"
-
+        "fcm-token": "fhskjhewjkh32j4hdf87bg32r4bjhsdfjbjhfd89dshfjsjkdfksdfibsdbfbjwerhj78324hbjhbsdkfsdf"
       },
       "response": {
         "status": true,
         "message": "Token successful",
         "data": {
           "appToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockTokenForDevTesting",
-          "version": "1.0.0" 
+          "version": "1.0.0"
         }
       }
     },
-
     "/auth/login": {
       "method": "POST",
       "headers": {
@@ -35,27 +32,26 @@
       },
       "request": {
         "username": "arockia.d@email.com",
-        "password": "Secure@123"  
+        "password": "Secure@123"
       },
       "response": {
         "status": true,
         "message": "Login successful",
         "data": {
-            "userId": "USR00987",
-            "imageurl":"",
-            "firstLogin": true,
-            "accessToken": "newMockAccessTokenXYZ",
-            "refreshToken": "newMockRefreshTokenABC" 
+          "userId": "USR00987",
+          "imageurl": "",
+          "firstLogin": true,
+          "accessToken": "newMockAccessTokenXYZ",
+          "refreshToken": "newMockRefreshTokenABC"
         }
       }
     },
-    
     "/auth/forgot-username": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
-         "language-code": "EN"
+        "language-code": "EN"
       },
       "request": {
         "emailId": "arockia.d@email.com"
@@ -68,13 +64,12 @@
         }
       }
     },
-
     "/auth/forgot-password/request": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
-         "language-code": "EN"
+        "language-code": "EN"
       },
       "request": {
         "emailId": "arockia.d@email.com"
@@ -87,13 +82,12 @@
         }
       }
     },
-
     "/auth/forgot-password/validate": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
-         "language-code": "EN"
+        "language-code": "EN"
       },
       "request": {
         "otp": "542318",
@@ -108,18 +102,17 @@
         }
       }
     },
-
     "/auth/forgot-password/reset": {
       "method": "POST",
       "headers": {
         "Authorization": "Bearer {{appToken}}",
         "Content-Type": "application/json",
-         "language-code": "EN"
+        "language-code": "EN"
       },
       "request": {
         "newPassword": "StrongPass@123",
         "confirmPassword": "StrongPass@123",
-         "validation-request-id": "1"
+        "validation-request-id": "1"
       },
       "response": {
         "status": true,
@@ -130,7 +123,6 @@
         }
       }
     },
-
     "/registration/validate-user": {
       "method": "POST",
       "headers": {
@@ -153,7 +145,6 @@
         }
       }
     },
-
     "/registration/create-account": {
       "method": "POST",
       "headers": {
@@ -179,7 +170,6 @@
         }
       }
     },
-    
     "/registration/email-verification": {
       "method": "POST",
       "headers": {
@@ -199,7 +189,6 @@
         }
       }
     },
-
     "/registration/otp/request": {
       "method": "POST",
       "headers": {
@@ -219,7 +208,6 @@
         }
       }
     },
-
     "/registration/otp/validate": {
       "method": "POST",
       "headers": {
@@ -259,7 +247,6 @@
         }
       }
     },
-
     "/refinance/getInfo": {
       "method": "GET",
       "headers": {
@@ -271,7 +258,7 @@
       "response": {
         "status": true,
         "message": "Refinance information fetched successfully.",
-        "data":{
+        "data": {
           "firstName": "Pitt",
           "lastName": "Rock",
           "phoneNumber": "9876543210",
@@ -310,12 +297,11 @@
             {
               "cityId": "68abe5ab-9fad-4222-aeff-1b5b0cd9c40e",
               "cityAndCounty": "WASHINGTON - WEISER"
-            }             
-        ]
+            }
+          ]
+        }
       }
-    }
-  },
-
+    },
     "/refinance": {
       "method": "POST",
       "headers": {
@@ -337,78 +323,90 @@
         "message": "Refinance request created successfully."
       }
     },
-    
     "/dashboard/loans": {
       "method": "GET",
       "headers": {
         "Authorization": "Bearer {{accessToken}}",
         "Content-Type": "application/json"
-    },
-    "request": {},
-    "response": {
-      "status": true,
-      "message": "Dashboard loans fetched successfully.",
-      "data": [
+      },
+      "request": {},
+      "response": {
+        "status": true,
+        "message": "Dashboard loans fetched successfully.",
+        "data": [
           {
-            "loanNumber": "02912312390",
+            "loanNumber": 7357000038,
             "loanStatus": "R",
-            "isPrimaryLoan": true,
-            "propertyAddress": "882 S CURTIS RD",
-            "propertyAddress2": null,
-            "propertyCity": "BOISE",
-            "propertyState": "ID",
-            "propertyZip": "83705",
-            "interestRate": 0.0575,
-            "principalBalance": 19344.15,
-            "escrowBalance": 52344.0,
-            "currentAmountDue": 1390.0,
-            "paymentDueDate": "2025-09-01T00:00:00",
-            "principalAndInterest": 962.75,
-            "escrowForTaxesAndInsurance": 427.25,
-            "subsidizedAmount": 0.0,
-            "partialPayment": 0.0,
-            "lateFee": 0.0,
-            "nsfFee": 0.0,
-            "deferredLateFee": 0.0,
-            "deferredNsfFee": 0.0,
-            "otherFees": 0.0,
-			"autoPayEnabled": true,
-            "borrowerNames": [
-              "PENNY PUBLIC"
-            ]
-        },
-        {
-            "loanNumber": "7357000038",
-            "loanStatus": "R",
-            "isPrimaryLoan": false,
+            "isSecond": false,
+            "hasPendingPayment": false,
             "propertyAddress": "765 SOME PARKWAY",
             "propertyAddress2": null,
             "propertyCity": "BOISE",
             "propertyState": "ID",
             "propertyZip": "83703",
+            "escrowPayment": 459.07,
+            "totalMonthlyPayment": 1143,
+            "unpaidPrincipalBalance": 416350,
+            "escrowBalance": 0,
             "interestRate": 0.0425,
-            "principalBalance": 275650.0,
-            "escrowBalance": 0.0,
-            "currentAmountDue": 961.41,
-            "paymentDueDate": "2025-11-01T00:00:00",
-            "principalAndInterest": 683.93,
-            "escrowForTaxesAndInsurance": 459.07,
-            "subsidizedAmount": 0.0,
-            "partialPayment": -232.75,
-            "lateFee": 51.16,
-            "nsfFee": 0.0,
-            "deferredLateFee": 0.0,
-            "deferredNsfFee": 0.0,
-            "otherFees": 0.0,
-			      "autoPayEnabled": false,
+            "nextPaymentDueDate": "2025-11-01T00:00:00",
+            "lastPaymentReceivedDate": null,
+            "totalAmountDue": 2104.41,
             "borrowerNames": [
               "PITT ROCK"
-            ]
+            ],
+            "paymentDetails": {
+              "principalAndInterestAmount": 683.93,
+              "escrowAmount": 459.07,
+              "subsidizedAmount": 0,
+              "partialPaymentAmount": 232.75,
+              "optionalInsurance": 0,
+              "lateFeeAmount": 51.16,
+              "nsfFeeAmount": 0,
+              "deferredLateFeeAmount": 0,
+              "deferredNSFFeeAmount": 0,
+              "otherFeesAmount": 0
+            },
+            "pendingPaymentDetails": null
+          },
+          {
+            "loanNumber": 7357000012,
+            "loanStatus": "R",
+            "isSecond": false,
+            "hasPendingPayment": false,
+            "propertyAddress": "882 S CURTIS RD",
+            "propertyAddress2": null,
+            "propertyCity": "BOISE",
+            "propertyState": "ID",
+            "propertyZip": "83705",
+            "escrowPayment": 334.75,
+            "totalMonthlyPayment": 744,
+            "unpaidPrincipalBalance": 275650,
+            "escrowBalance": 0,
+            "interestRate": 0.0525,
+            "nextPaymentDueDate": "2025-10-01T00:00:00",
+            "lastPaymentReceivedDate": null,
+            "totalAmountDue": 2238.48,
+            "borrowerNames": [
+              "PENNY PUBLIC"
+            ],
+            "paymentDetails": {
+              "principalAndInterestAmount": 818.5,
+              "escrowAmount": 669.5,
+              "subsidizedAmount": 0,
+              "partialPaymentAmount": 35,
+              "optionalInsurance": 0,
+              "lateFeeAmount": 0,
+              "nsfFeeAmount": 0,
+              "deferredLateFeeAmount": 41.48,
+              "deferredNSFFeeAmount": 0,
+              "otherFeesAmount": 0
+            },
+            "pendingPaymentDetails": null
           }
         ]
       }
-  },
-
+    },
     "/auth/refresh": {
       "method": "POST",
       "headers": {
@@ -427,7 +425,6 @@
         }
       }
     },
-
     "/__health": {
       "method": "GET",
       "headers": {
