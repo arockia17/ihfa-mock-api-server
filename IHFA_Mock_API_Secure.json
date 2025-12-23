@@ -395,6 +395,277 @@
         ]
       }
     },
+
+    "/payments/guest/one-time": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{appToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "firstName": "John",
+        "lastName": "Homeowner",
+        "loanNumber": "120923821",
+        "propertyZipCode": "690034",
+        "paymentType": "Checking",
+        "accountNumber": "000333332349889",
+        "routingNumber": "543543",
+        "paymentAmount": "250.00",
+        "additionalPrincipal": "0.00",
+        "additionalEscrow": "0.00",
+        "confirmationEmail": "guest.user@example.com"
+      },
+      "response": {
+        "message": "One-time guest payment submitted successfully.",
+        "loanNumber": "120923821",
+        "paymentConfirmation": {
+          "paymentDate": "2025-09-01",
+          "confirmationNumber": "GUEST-20250901-001",
+          "paymentAmount": "250.00",
+          "additionalPrincipal": "0.00",
+          "additionalEscrow": "0.00",
+          "totalAmount": "250.00",
+          "maskedBankAccountNumber": "********9889"
+        }
+      }
+    },
+
+    "/payments/one-time": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "loanNumber": "02912312390",
+        "bankAccountId": "BANKCHK093388",
+        "paymentAmount": "1198.86",
+        "additionalPrincipal": "0.00",
+        "additionalEscrow": "0.00",
+         "paymentDate": "2025-08-01"
+      },
+      "response": {
+        "message": "Payment submitted successfully.",
+        "loanNumber": "02912312390",
+        "paymentConfirmation": {
+          "paymentDate": "2025-08-01",
+          "confirmationNumber": "PAY-20250801-001",
+          "paymentAmount": "1198.86",
+          "additionalPrincipal": "0.00",
+          "additionalEscrow": "0.00",
+          "totalAmount": "1198.86",
+          "maskedBankAccountNumber": "****3388"
+        }
+      }
+    },
+
+    "/payments/bank-accounts": {
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987"
+      },
+      "response": {
+        "status": true,
+        "message": "Bank accounts fetched successfully.",
+        "data": [
+          {
+            "bankAccountId": "BANKCHK093388",
+            "accountNickname": "Main Checking",
+            "accountType": "Checking",
+            "maskedAccountNumber": "****3388",
+            "bankRoutingNumber": "123456789",
+            "isDefaultForPayments": true,
+            "isDefaultForAutopay": true,
+            "createdDate": "2024-11-01"
+          },
+          {
+            "bankAccountId": "BANKSVG772211",
+            "accountNickname": "Savings Escrow",
+            "accountType": "Savings",
+            "maskedAccountNumber": "****1122",
+            "bankRoutingNumber": "987654321",
+            "isDefaultForPayments": false,
+            "isDefaultForAutopay": false,
+            "createdDate": "2024-12-15"
+          }
+        ]
+      }
+    },
+
+    "/payments/bank-accounts/add": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "accountNickname": "New Checking",
+        "bankRoutingNumber": "111222333",
+        "confirmBankRoutingNumber": "111222333",
+        "accountNumber": "000999888777666",
+        "confirmAccountNumber": "000999888777666",
+        "accountType": "Checking"
+      },
+      "response": {
+        "status": true,
+        "message": "Bank account added successfully.",
+        "data": {
+          "bankAccountId": "BANKCHK999666",
+          "accountNickname": "New Checking",
+          "accountType": "Checking",
+          "maskedAccountNumber": "****6666",
+          "bankRoutingNumber": "111222333",
+          "isDefaultForPayments": false,
+          "isDefaultForAutopay": false
+        }
+      }
+    },
+
+    "/payments/bank-accounts/edit": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "bankAccountId": "BANKCHK093388",
+        "accountNickname": "Updated Checking 093388",
+        "accountType": "Checking",
+        "setAsDefaultForPayments": true,
+        "setAsDefaultForAutopay": true
+      },
+      "response": {
+        "status": true,
+        "message": "Bank account updated successfully.",
+        "data": {
+          "bankAccountId": "BANKCHK093388",
+          "accountNickname": "Updated Checking 093388",
+          "accountType": "Checking",
+          "maskedAccountNumber": "****3388",
+          "bankRoutingNumber": "123456789",
+          "isDefaultForPayments": true,
+          "isDefaultForAutopay": true
+        }
+      }
+    },
+
+    "/payments/bank-accounts/delete": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "bankAccountId": "BANKSVG772211"
+      },
+      "response": {
+        "status": true,
+        "message": "Bank account deleted successfully.",
+        "data": {
+          "bankAccountId": "BANKSVG772211"
+        }
+      }
+    },
+
+    "/autopay/signup": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "loanNumber": "02912312390",
+        "bankAccountId": "BANKCHK093388",
+        "autoPayType": "AmountDue",
+        "fixedAmount": null,
+        "draftDayOfMonth": 6,
+        "sendConfirmationEmail": true,
+        "confirmationEmail": "john.homeowner@example.com"
+      },
+      "response": {
+        "status": true,
+        "message": "AutoPay enrollment successful.",
+        "data": {
+          "autoPayId": "AP-02912312390-01",
+          "loanNumber": "02912312390",
+          "bankAccountId": "BANKCHK093388",
+          "autoPayType": "AmountDue",
+          "fixedAmount": null,
+          "draftDayOfMonth": 6,
+          "status": "Active"
+        }
+      }
+    },
+
+    "/autopay/details": {
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "loanNumber": "02912312390"
+      },
+      "response": {
+        "status": true,
+        "message": "AutoPay details fetched successfully.",
+        "data": {
+          "loanNumber": "02912312390",
+          "autoPayEnabled": true,
+          "autoPayId": "AP-02912312390-01",
+          "bankAccountId": "BANKCHK093388",
+          "paymentMethodDisplayName": "Checking 093388",
+          "autoPayType": "AmountDue",
+          "fixedAmount": null,
+          "draftDayOfMonth": 6,
+          "status": "Active"
+        }
+      }
+    },
+
+    "/autopay/update": {
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer {{accessToken}}",
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "userId": "USR00987",
+        "loanNumber": "02912312390",
+        "autoPayId": "AP-02912312390-01",
+        "bankAccountId": "BANKCHK093388",
+        "autoPayType": "FixedAmount",
+        "fixedAmount": "1200.00",
+        "draftDayOfMonth": 5,
+        "autoPayEnabled": true
+      },
+      "response": {
+        "status": true,
+        "message": "AutoPay updated successfully.",
+        "data": {
+          "loanNumber": "02912312390",
+          "autoPayId": "AP-02912312390-01",
+          "bankAccountId": "BANKCHK093388",
+          "autoPayType": "FixedAmount",
+          "fixedAmount": "1200.00",
+          "draftDayOfMonth": 5,
+          "startDate": "2025-09-05",
+          "autoPayEnabled": true,
+          "status": "Active"
+        }
+      }
+    },
+
     "/auth/refresh": {
       "method": "POST",
       "headers": {
