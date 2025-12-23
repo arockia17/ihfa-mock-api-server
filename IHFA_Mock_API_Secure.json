@@ -263,42 +263,8 @@
           "lastName": "Rock",
           "phoneNumber": "9876543210",
           "email": "arockia.d@flatworldsolutions.com",
-          "state": "Idaho",
-          "cityId": "d5199f34-1f7f-45e8-bd01-10dd0620b2cc",
-          "cityCounties": [
-            {
-              "cityId": "d5199f34-1f7f-45e8-bd01-10dd0620b2cc",
-              "cityAndCounty": "ADA - BOISE"
-            },
-            {
-              "cityId": "cfcf5c00-2853-476d-bf96-6db570a00857",
-              "cityAndCounty": "ADA - EAGLE"
-            },
-            {
-              "cityId": "a56a9bcd-6bb9-4492-8eac-b562413b4593",
-              "cityAndCounty": "ADA - GARDEN CITY"
-            },
-            {
-              "cityId": "1c282fa6-d9a6-434c-8268-c2c3d4821449",
-              "cityAndCounty": "ADA - KUNA"
-            },
-            {
-              "cityId": "0fe22ade-0c7b-440c-a707-2ded3a1c24c9",
-              "cityAndCounty": "ADA - MERIDIAN"
-            },
-            {
-              "cityId": "c09d29af-0bd7-4278-a560-4ea14de5ed26",
-              "cityAndCounty": "ADA - STAR"
-            },
-            {
-              "cityId": "42bff638-19e4-4d34-b73f-e02c3c0193a2",
-              "cityAndCounty": "ADAMS - COUNCIL"
-            },
-            {
-              "cityId": "68abe5ab-9fad-4222-aeff-1b5b0cd9c40e",
-              "cityAndCounty": "WASHINGTON - WEISER"
-            }
-          ]
+          "prefferedtime": "AM",
+          "modeofcontact": "email"
         }
       }
     },
@@ -339,6 +305,15 @@
             "loanStatus": "R",
             "isSecond": false,
             "hasPendingPayment": false,
+            "isAutoPayEnabled": false,
+            "isEscrowAnalysisAvailable": true,
+            "canMakePayment": true,
+            "canPayAdditionalPrincipal": false,
+            "canPayAdditionalEscrow": true,
+            "canCancelPayment": false,
+            "hasPendingCanceledPayment": false,
+            "paperOrNormalAutoPayEnabled": false,
+            "isLoanDueOnSale": false,
             "propertyAddress": "765 SOME PARKWAY",
             "propertyAddress2": null,
             "propertyCity": "BOISE",
@@ -348,10 +323,12 @@
             "totalMonthlyPayment": 1143,
             "unpaidPrincipalBalance": 416350,
             "escrowBalance": 0,
-            "interestRate": 0.0425,
+            "interestRate": 4.25,
             "nextPaymentDueDate": "2025-11-01T00:00:00",
-            "lastPaymentReceivedDate": null,
-            "totalAmountDue": 2104.41,
+            "lastPaymentReceivedDate": "2025-09-01T00:00:00",
+            "nextPaymentDueAmount": 2104.41,
+            "lastPaymentReceivedAmount": 1143,
+            "totalAmountDue": 961.41,
             "borrowerNames": [
               "PITT ROCK"
             ],
@@ -372,10 +349,19 @@
           {
             "loanNumber": 7357000012,
             "loanStatus": "R",
-            "isSecond": false,
+            "isSecond": true,
             "hasPendingPayment": false,
+            "isAutoPayEnabled": true,
+            "isEscrowAnalysisAvailable": false,
+            "canMakePayment": true,
+            "canPayAdditionalPrincipal": false,
+            "canPayAdditionalEscrow": true,
+            "canCancelPayment": false,
+            "hasPendingCanceledPayment": false,
+            "paperOrNormalAutoPayEnabled": false,
+            "isLoanDueOnSale": false,
             "propertyAddress": "882 S CURTIS RD",
-            "propertyAddress2": null,
+            "propertyAddress2": "ADDRESS LINE 2",
             "propertyCity": "BOISE",
             "propertyState": "ID",
             "propertyZip": "83705",
@@ -383,16 +369,18 @@
             "totalMonthlyPayment": 744,
             "unpaidPrincipalBalance": 275650,
             "escrowBalance": 0,
-            "interestRate": 0.0525,
-            "nextPaymentDueDate": "2025-10-01T00:00:00",
-            "lastPaymentReceivedDate": null,
-            "totalAmountDue": 2238.48,
+            "interestRate": 5.25,
+            "nextPaymentDueDate": "2025-11-01T00:00:00",
+            "lastPaymentReceivedDate": "2025-09-01T00:00:00",
+            "nextPaymentDueAmount": 1494.48,
+            "lastPaymentReceivedAmount": 744,
+            "totalAmountDue": 750.48,
             "borrowerNames": [
               "PENNY PUBLIC"
             ],
             "paymentDetails": {
-              "principalAndInterestAmount": 818.5,
-              "escrowAmount": 669.5,
+              "principalAndInterestAmount": 409.25,
+              "escrowAmount": 334.75,
               "subsidizedAmount": 0,
               "partialPaymentAmount": 35,
               "optionalInsurance": 0,
